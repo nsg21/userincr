@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<!--
+  2014-07-09 -- created by nsg
+-->
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="" />
+<title></title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="userincr.js"></script>
+
+<script>
+$(function(){
+  $("input.manual-adjust").userincr().data({'min':0,'max':1000});
+  $("input.adjust").userincr({buttonlabels:{'dec':'▼','inc':'▲'},});
+  // $(".userincr-btn-inc").attr('accesskey','u');
+  // $(".userincr-btn-dec").val("^");
+});
+</script>
+</head>
+<body>
+<h1>Adjust value in a box</h1>
+
+
+<span><input id="box1" type="text" class="manual-adjust" value="200"/></span><br/>
+<span><input title="DOM title" type="text" class="manual-adjust" value="100"/></span><br/>
+<span>Not a label</span>
+<input type="text" data-min="-0.5" data-max="255.5" class="adjust" value="100" /><br/>
+<label for="a2">Enter number here</label>
+<input id="a2" type="text" class="adjust" value="105" /><br/>
+
+
+<hr/>
+</body></html>
+

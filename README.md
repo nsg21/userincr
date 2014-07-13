@@ -10,16 +10,16 @@ Description
 
 Turns edit box into a spinbox with user-controllable step function.
 
-Plugin wraps the box in a <span class="userincr-container"> (unless it is the only child of its parent) and generates a pair of buttons to increment and decrement the value in that box. The buttons classes are "userincr-btn-inc" and "userincr-btn-dec".
+Plugin wraps the box in a `<span class="userincr-container">` (unless it is the only child of its parent) and generates a pair of buttons to increment and decrement the value in that box.
 
 When user enters a string of a form `+x`, `*x`, `/x`, `+x%`, `-x%`, the
 previous value of the box is increased or multiplied by this amount. This also
-changes the increment step value so that future clicks on the buttons will
+changes the increment step value, so that future clicks on the buttons will
 repeat same operation.
 
-The string of form `-x` sets the value of a box to -x, unless the range of the
-box does not allow negative numbers (see below) -- in this case, it acts as a
-decrement operation.
+The string of a form `-x` sets the value of the box to -x, unless the range of
+the box does not allow negative numbers (see below) -- in this case, it acts as
+a decrement operation.
 
 Options
 -------
@@ -57,6 +57,10 @@ of the increment buttons.
 The title of the increment buttons shows amount and type of
 increment/decrement.
 
+The css classes for generated buttons are "userincr-btn-inc" and
+"userincr-btn-dec".
+
+The css class for the generated wrapper is "userincr-container".
 
 
 

@@ -1,0 +1,25 @@
+{
+    "name": "userincr",
+    "version": "1.0.0",
+    "author": {
+        "name": "Andrew Nikitin",
+        "email": "andrewnikitin@yahoo.com"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.5"
+    },
+    "keywords": [ "decrement", "increment", "form", "number", "user", "adjustable" ],
+
+    "title": "jQuery User Adjustable Incrementer",
+    "description": "Spin box with page user selectable increment/decrement step",
+    "bugs": "https://github.com/nsg21/userincr/issues",
+    "homepage": "https://github.com/nsg21/userincr",
+    "docs": "https://github.com/nsg21/userincr"
+}
+

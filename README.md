@@ -21,8 +21,8 @@ The string of a form `-x` sets the value of the box to -x, unless the range of
 the box does not allow negative numbers (see below) -- in this case, it acts as
 a decrement operation.
 
-Options
--------
+Constructor Options
+-------------------
 
 ```javascript
 $(".myspinbox").userincr({buttonlabels:{inc:'>>',dec:'<<'}})
@@ -30,7 +30,10 @@ $(".myspinbox").userincr({buttonlabels:{inc:'>>',dec:'<<'}})
 uses custom labels on the generated buttons
 
 
-Other options need to be passed as data elements:
+`DATA` options
+--------------
+
+### Range
 
 ```javascript
 $(".myspinbox").userincr().data({'min':0,'max':1000});
@@ -43,6 +46,16 @@ or
 ```
 
 restricts the allowed values to a given range.
+
+### Initial increment
+
+```javascript
+$(".myspinbox").data({'step':Math.sqrt(2),'op':'mul'}).userincr();
+```
+Selects initial value and mode of increment. Allowed values for `op` is `add` (default) and `mul`.
+
+Data has to be set before the constructor in order for the generated buttons to
+get their proper titles, but the action will work either way.
 
 
 Other notes

@@ -12,23 +12,34 @@
 
 <script>
 $(function(){
-  $("input.manual-adjust").userincr().data({'min':0,'max':1000});
-  $("input.adjust").userincr({buttonlabels:{'dec':'▼','inc':'▲'},});
-  // $(".userincr-btn-inc").attr('accesskey','u');
-  // $(".userincr-btn-dec").val("^");
+  $("#box1").userincr();
+  $("#box2").data({'min':0,'max':1000,'step':100}).userincr();
+  $("#box3").userincr();
+  $("#box4")
+    .data({step:Math.sqrt(2),op:'mul'})
+    .val(32)
+    .userincr({buttonlabels:{'dec':'◁','inc':'▷'},})
+  ;
 });
 </script>
+<style>
+  .narrative {margin-top:3ex}
+</style>
 </head>
 <body>
 <h1>Adjust value in a box</h1>
 
+<div class="narrative">Default use: increment is +1 and generated title attribute.Change increment to 5 by entering <kbd>+5&lt;Enter></kbd> into the box. </div>
+<span><input id="box1" type="text" value="200"/></span><br/>
 
-<span><input id="box1" type="text" class="manual-adjust" value="200"/></span><br/>
-<span><input title="DOM title" type="text" class="manual-adjust" value="100"/></span><br/>
-<span>Not a label</span>
-<input type="text" data-min="-0.5" data-max="255.5" class="adjust" value="100" /><br/>
-<label for="a2">Enter number here</label>
-<input id="a2" type="text" class="adjust" value="105" /><br/>
+<div class="narrative">Range is limited to 0—1000. Entering negative number changes increment, rather than the value. Try <kbd>-50</kbd></div>
+<span><input id="box2" title="DOM title" type="text" value="100"/></span><br/>
+
+<div class="narrative">Range, increment and increment type is specified as DOM data-* attributes. Can be changed.</div>
+<input id="box3" type="text" data-min="1" data-max="1024" data-step="1.05" data-op="mul" value="100" /><br/>
+
+<div class="narrative">Custom button labels</div>
+<input id="box4" type="text" /><br/>
 
 
 <hr/>

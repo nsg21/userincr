@@ -8,9 +8,11 @@ Description
  $(".myspinbox").userincr();
 ```
 
-Turns edit box into a spinbox with user-controllable step function.
+Turns an edit box into a spinbox with user-controllable increment function.
 
-Plugin wraps the box in a `<span class="userincr-container">` (unless it is the only child of its parent) and generates a pair of buttons to increment and decrement the value in that box.
+Plugin wraps a text box in a `<span class="userincr-container">` (unless it is
+the only child of its parent) and generates a pair of buttons to increment and
+decrement a value in that box.
 
 When user enters a string of a form `+x`, `*x`, `/x`, `+x%`, `-x%`, the
 previous value of the box is increased or multiplied by this amount. This also
@@ -23,7 +25,6 @@ a decrement operation.
 
 Constructor Options
 -------------------
-
 ```javascript
 $(".myspinbox").userincr({buttonlabels:{inc:'>>',dec:'<<'}})
 ```
@@ -32,37 +33,31 @@ uses custom labels on the generated buttons
 
 `DATA` options
 --------------
-
 ### Range
-
 ```javascript
 $(".myspinbox").userincr().data({'min':0,'max':1000});
 ```
-
 or
-
 ```html
 <input type="text" data-min="-0.5" data-max="255.5" value="100" /><br/>
 ```
-
-restricts the allowed values to a given range.
+restricts allowed values to a given range.
 
 ### Initial increment
-
 ```javascript
 $(".myspinbox").data({'step':Math.sqrt(2),'op':'mul'}).userincr();
 ```
 Selects initial value and mode of increment. Allowed values for `op` is `add` (default) and `mul`.
 
-Data has to be set before the constructor in order for the generated buttons to
-get their proper titles, but the action will work either way.
+Data has to be set before the constructor call in order for the generated
+buttons to get their proper titles, but the action will work either way.
 
 
 Other notes
 -----------
-
-Unless source text box already has a `title` attribute, the plugin generates a
-title with a reminder on the format of step and mode control inputs.
+Unless the source text box already has a `title` attribute, the plugin
+generates a title with a reminder on the format of step and mode control
+inputs.
 
 The box generates custom `spin` event every time it is changed by clicking on
 of the increment buttons.

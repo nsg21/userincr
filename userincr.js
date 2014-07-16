@@ -6,10 +6,8 @@
   // options are passed through .data facility
   //   min -- minimum allowed value
   //   max -- maximum allowed value
-  // TODO:
   //   step -- increment/decrement
   //   op -- 'add' or 'mul', type of increment
-  //   spinbuttons -- "<<,>>" if present, generate spin buttons
   // TODO:
   //   spin on keyboard and mouse wheel
   //

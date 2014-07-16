@@ -13,7 +13,6 @@
   //
   $.fn.userincr=function(options) {
     options=$.extend({},$.fn.userincr.defaults,options ||{});
-    // ??? optins is shared between all invocations of a function?
     return this.each(function(){
       var edit=$(this);
       var oldvalue=edit.val();

@@ -35,11 +35,13 @@ uses custom labels on the generated buttons
 ```javascript
 $(".myspinbox").userincr({kbd:true})
 ```
+Allow up and down arrows to trigger increment and decrement.
 
 ### Enable mouse wheel increments
 ```javascript
 $(".myspinbox").userincr({wheel:true})
 ```
+Mouse wheel (with cursor over edit box) triggers increments and decrements.
 ### Named values
 ```javascript
 $(".myspinbox").userincr({constants:{earth:6378137,moon:1738000}})

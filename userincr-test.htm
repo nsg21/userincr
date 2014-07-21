@@ -8,39 +8,63 @@
 <link rel="stylesheet" type="text/css" href="" />
 <title></title>
 <style>
-  .narrative {margin-top:3ex}
+  .comment {margin-top:3ex}
 </style>
 </head>
 <body>
-<h1>Adjust value in a box</h1>
+<h1>userincr jQuery plugin demo</h1>
 
-<div class="narrative">Default use: increment is +1 and generated title attribute.Change increment to 5 by entering <kbd>+5&lt;Enter></kbd> into the box. </div>
+<p><tt>userincr</tt> enhances edit boxes with "increment" and "decrement" buttons.
+The increment step can be chosen by the page user.
+<p>Download the latest version of the plugin from
+<a href="https://github.com/nsg21/userincr">here</a>
+
+<hr/>
+<div class="comment">Default use: increment is +1 and generated title attribute.Change increment to 5 by entering <kbd>+5</kbd>↵ into the box. </div>
 <span><input id="box1" type="text" value="200"/></span><br/>
 
-<div class="narrative">Range is limited to 0—1000. Entering negative number changes increment, rather than the value. Try <kbd>-50</kbd></div>
+<div class="comment">Range is limited to 0—1000. Entering negative number changes the increment, rather than the value. Try <kbd>-50</kbd></div>
 <span><input id="box2" title="DOM title" type="text" value="100"/></span><br/>
 
-<div class="narrative">Range, increment and increment type is specified as DOM data-* attributes. Can be changed.</div>
+<div class="comment">Range, increment and increment type is specified as DOM <tt>data-*</tt> attributes. Can be changed.</div>
 <input id="box3" type="text" data-min="1" data-max="1024" data-step="1.05" data-op="mul" value="100" /><br/>
 
-<div class="narrative">Custom button labels</div>
+<div class="comment">Custom button labels</div>
 <input id="box4" type="text" /><br/>
+
+<div class="comment">Responsive to keyboard (up and down arrows) and mouse wheel; defined constants 'earth' and 'moon'.</div>
+<input id="box5" type="text" /><br/>
 
 
 <hr/>
+
+<p>Similar plugins:
+<ul>
+<li><a href="http://jqueryui.com/spinner/">here</a>
+<li><a href="http://stonebk.github.io/jquery-arrow-increment/">here</a>
+<li><a href="http://thaibault.github.io/jQuery-incrementer/">here</a>
+</ul>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-<script src="userincr.min.js"></script>
+<script src="userincr.js"></script>
 
 <script>
 $(function(){
+  $('title').html($('h1').html())
+  // $.fn.userincr.defaults.kbd=true;
+  // $.fn.userincr.defaults.wheel=true;
   $("#box1").userincr();
-  $("#box2").data({'min':0,'max':1000,'step':100}).userincr();
+  $("#box2")
+    .data({'min':0,'max':1000,'step':100})
+    .userincr({kbd:true,wheel:true})
   $("#box3").userincr();
   $("#box4")
     .data({step:Math.sqrt(2),op:'mul'})
     .val(32)
-    .userincr({buttonlabels:{'dec':'◁','inc':'▷'},})
-  ;
+    .userincr({buttons:{'dec':'◁','inc':'▷'}})
+  $("#box5")
+    .val(0)
+    .userincr({kbd:true,wheel:true,constants:{earth:6378137,moon:1738000}})
+  $("a").each(function(){with($(this))if('here'==html()) html(attr("href"))});
 });
 </script>
 </body></html>

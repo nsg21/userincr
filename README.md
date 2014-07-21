@@ -25,11 +25,26 @@ a decrement operation.
 
 Constructor Options
 -------------------
+### Custom button labels
 ```javascript
-$(".myspinbox").userincr({buttonlabels:{inc:'>>',dec:'<<'}})
+$(".myspinbox").userincr({buttons:{inc:'>>',dec:'<<'}})
 ```
 uses custom labels on the generated buttons
 
+### Enable keyboard increments
+```javascript
+$(".myspinbox").userincr({kbd:true})
+```
+
+### Enable mouse wheel increments
+```javascript
+$(".myspinbox").userincr({wheel:true})
+```
+### Named values
+```javascript
+$(".myspinbox").userincr({constants:{earth:6378137,moon:1738000}})
+```
+Named values. symbolic constants listed in `constants` option are translated into numbers as entered. The name will only be converted to a number if entered exactly, not as part of increment operation.
 
 `DATA` options
 --------------
@@ -59,7 +74,7 @@ Unless the source text box already has a `title` attribute, the plugin
 generates a title with a reminder on the format of step and mode control
 inputs.
 
-The box generates custom `spin` event every time it is changed by clicking on
+The box generates custom `step` event every time it is changed by clicking on
 of the increment buttons.
 
 The title of the increment buttons shows amount and type of

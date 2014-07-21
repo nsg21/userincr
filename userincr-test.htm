@@ -7,21 +7,6 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="" />
 <title></title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-<script src="userincr.js"></script>
-
-<script>
-$(function(){
-  $("#box1").userincr();
-  $("#box2").data({'min':0,'max':1000,'step':100}).userincr();
-  $("#box3").userincr();
-  $("#box4")
-    .data({step:Math.sqrt(2),op:'mul'})
-    .val(32)
-    .userincr({buttonlabels:{'dec':'◁','inc':'▷'},})
-  ;
-});
-</script>
 <style>
   .narrative {margin-top:3ex}
 </style>
@@ -43,5 +28,20 @@ $(function(){
 
 
 <hr/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script src="userincr.min.js"></script>
+
+<script>
+$(function(){
+  $("#box1").userincr();
+  $("#box2").data({'min':0,'max':1000,'step':100}).userincr();
+  $("#box3").userincr();
+  $("#box4")
+    .data({step:Math.sqrt(2),op:'mul'})
+    .val(32)
+    .userincr({buttonlabels:{'dec':'◁','inc':'▷'},})
+  ;
+});
+</script>
 </body></html>
 

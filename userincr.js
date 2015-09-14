@@ -21,7 +21,7 @@
     options=$.extend({},$.fn.userincr.defaults,options ||{});
     return this.each(function(){
       var edit=$(this);
-      edit.data('value',options.value||edit.val()||0)
+      edit.data('value',options.value||edit.data('value')||edit.val()||0)
       edit.val(edit.data('value'))
       $.each(['min','max','step','op','previos'],function(i,k){ if( undefined!==options[k] ) edit.data(k,options[k]) })
       var lastinc='b';

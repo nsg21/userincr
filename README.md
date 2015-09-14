@@ -79,6 +79,12 @@ inputs.
 The box generates custom `step` event every time it is changed by clicking on
 of the increment buttons.
 
+`.data('previous')` gives access to the value that the control had before
+increment/decrement or manual set. `.data('value')` is current value. At certain
+conditions may be different from `.val()`
+
+`.data('spin')` is a closure which gives performs inc/decrement.
+
 The title of the increment buttons shows amount and type of
 increment/decrement.
 

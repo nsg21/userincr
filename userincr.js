@@ -3,11 +3,17 @@
 // (C) 2014 Andrew Nikitin
 // MIT License
 (function($){
-  // options are passed through .data facility
+  // some options only count during initialization
+  //   buttons
+  //   
+  // some options are stored and may be passed through .data facility
   //   min -- minimum allowed value
   //   max -- maximum allowed value
   //   step -- increment/decrement
   //   op -- 'add' or 'mul', type of increment
+  // other accessible .data :
+  //   previous -- previous value before change or step
+  //   value -- what is the current value, almost, but not quite .val()
   // TODO:
   //   deal with negative mul-type spins
   //
@@ -15,7 +21,9 @@
     options=$.extend({},$.fn.userincr.defaults,options ||{});
     return this.each(function(){
       var edit=$(this);
-      var oldvalue=edit.val();
+      edit.data('value',options.value||edit.val()||0)
+      edit.val(edit.data('value'))
+      $.each(['min','max','step','op','previos'],function(i,k){ if( undefined!==options[k] ) edit.data(k,options[k]) })
       var lastinc='b';
       edit
       .attr('title',edit.attr('title') || 'Enter "+x" or "+x%" or "*x" \nto change increment'+$.map(options.constants,function(v,i){return "\n"+i+"="+v}).join(''))
@@ -73,7 +81,8 @@
         if( $.isNumeric(t) && x<t ) x=t;
         t=edit.data('max')
         if( $.isNumeric(t) && x>t ) x=t;
-        oldvalue=x;
+        edit.data('previous',edit.data('value'))
+        edit.data('value',x);
         edit.val(x)
       }
       var newdelta=function(newop,newdelta,spinop){
@@ -88,13 +97,15 @@
       }
       var spin=function(spinop,from) {
         //console.log('sop='+spinop+" from="+from)
-        edit.val(options.ops[edit.data('op')][spinop](parseFloat(oldvalue),edit.data('step')));
+        edit.val(options.ops[edit.data('op')][spinop](parseFloat(edit.data('value')),edit.data('step')));
         limit_val();
         lastinc=from||lastinc;
         if('b'==lastinc) btn[spinop==='d'?0:1].focus();
         // console.log('trigger-spin');
         edit.trigger('step');
       };
+      // TODO: has to be a better way
+      edit.data('spin',spin)
 
       var btn=$.map(['dec','inc'],function(id){
         return $("<input>",{type:"button",value:options.buttons[id],"class":'userincr-btn-'+id})

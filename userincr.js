@@ -23,7 +23,7 @@
       var edit=$(this);
       edit.data('value',options.value||edit.data('value')||edit.val()||0)
       edit.val(edit.data('value'))
-      $.each(['min','max','step','op','previos'],function(i,k){ if( undefined!==options[k] ) edit.data(k,options[k]) })
+      $.each(['min','max','step','op','previous'],function(i,k){ if( undefined!==options[k] ) edit.data(k,options[k]) })
       var lastinc='b';
       edit
       .attr('title',edit.attr('title') || 'Enter "+x" or "+x%" or "*x" \nto change increment'+$.map(options.constants,function(v,i){return "\n"+i+"="+v}).join(''))
@@ -70,6 +70,7 @@
         spin(o,'k')
         e.preventDefault();
       })
+      if( 1!=edit.parent().children().length ) edit.wrap('<span class="userincr-container">');
       if(options.wheel) edit.on('wheel',function(e){
         // not sure what browser support of this is
         spin(e.originalEvent.wheelDeltaY<0?'d':'i','w');
@@ -90,7 +91,7 @@
           .data('op',newop)
           .data('step',newdelta)
         ;
-        ['dec','inc'].forEach(function(lbl,i){
+        $.each(['dec','inc'],function(i,lbl){
           btn[i].attr({title:options.ops[edit.data('op')][lbl+'fmt'](edit.data('step'))});
         });
         if(spinop!==undefined) spin(spinop);
@@ -112,7 +113,6 @@
           .on('click',function(){spin(id.substr(0,1),'b')});
       });
       newdelta(edit.data('op')||'add',edit.data('step')||1)
-      if( 1!=edit.parent().children().length ) edit.wrap('<span class="userincr-container">');
       edit.parent().append(btn);
     });
   };
